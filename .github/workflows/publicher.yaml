@@ -18,7 +18,7 @@ on:
 jobs:
 
   call-build-pr:
-    uses:  github.com/juliobsilva/api-management/tree/main/.github/workflows/apim-apiops-publisher.yaml@main
+    uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
       destination-enviroment: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
       commit-id: ${{ github.event_name == 'pull_request' && github.sha || inputs.commit-id  }}
