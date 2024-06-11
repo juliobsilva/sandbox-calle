@@ -1,0 +1,18 @@
+apiNames:
+- echo-api
+ 
+backendNames: [ignore]
+ 
+diagnosticNames: [ignore]
+ 
+loggerNames: [ignore]
+ 
+namedValueNames: [ignore]
+ 
+productNames: [ignore]
+ 
+subscriptionNames: [ignore]
+ 
+tagNames: [ignore]
+ 
+policyFragmentNames: [ignore]
