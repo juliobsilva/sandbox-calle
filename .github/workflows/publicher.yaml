@@ -21,5 +21,5 @@ jobs:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
       destination-enviroment: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
-      commit-id: ${{ github.event_name == 'pull_request' && github.sha || github.event_name == 'workflow_dispatch' && inputs.commit-id || inputs.commit-id }}
+      commit-id: ${{ github.event_name == 'pull_request' && github.sha || inputs.commit-id  }}
     secrets: inherit
