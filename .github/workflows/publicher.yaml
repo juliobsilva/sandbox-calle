@@ -11,9 +11,9 @@ on:
         type: string
         required: true
         default: prod
-      commit-id:
-        type: string
-        required: true
+      # commit-id:
+      #   type: string
+      #   required: true
 
 jobs:
 
@@ -21,5 +21,5 @@ jobs:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
       destination-enviroment: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
-      commit-id: ${{ github.event_name == 'pull_request' && github.sha || inputs.commit-id  }}
+      #commit-id: ${{ github.event_name == 'pull_request' && github.sha || inputs.commit-id  }}
     secrets: inherit
