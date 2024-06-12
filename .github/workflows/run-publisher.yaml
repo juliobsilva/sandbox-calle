@@ -22,20 +22,15 @@ jobs:
   get-commit:
     runs-on: ubuntu-latest
     steps:
-      
-    - name: Save state
-      run: echo "{commit_id}=${{ github.sha }}" >> $GITHUB_STATE
-      
-    - name: Set output
-      run: echo "{commit_id}=${{ github.sha }}" >> $GITHUB_OUTPUT
 
-      # Set the COMMIT_ID env variable
-    #   - name: Set the Commit Id
-    #     id: commit
-    #     run: |
-    #       echo "::set-output name=commit_id::${{ github.sha }}"
-    # outputs:
-    #   commit_id: ${{ steps.commit.outputs.commit_id }}
+    # Set the COMMIT_ID env variable
+    - name: Set the Commit Id
+      id: commit
+      run: |
+        echo "::set-output name=commit_id::${{ github.sha }}"
+    outputs:
+       commit_id: ${{ steps.commit.outputs.commit_id }}
+       
   #Publish with Commit ID
   Push-Changes-To-APIM-Dev-With-Commit-ID:
     if: (github.event.inputs.COMMIT_ID_CHOICE == 'publish-artifacts-in-last-commit' || github.event.inputs.COMMIT_ID_CHOICE == '')
