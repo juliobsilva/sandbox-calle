@@ -9,7 +9,7 @@ on:
         type: choice
         options:
         - Extract All APIs
-        - configuration.dev.yaml
+        - configuration.extractor.yaml
       API_SPECIFICATION_FORMAT:
         description: 'API Specification Format'     
         required: true
