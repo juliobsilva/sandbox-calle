@@ -22,11 +22,12 @@ jobs:
   get-commit:
     runs-on: ubuntu-latest
     steps:
+      
     - name: Save state
-      run: echo "::save-state name={commit_id}::${{ github.sha }}"
-
+      run: echo "{commit_id}=${{ github.sha }}" >> $GITHUB_STATE
+      
     - name: Set output
-      run: echo "::set-output name={commit_id}::${{ github.sha }}
+      run: echo "{commit_id}=${{ github.sha }}" >> $GITHUB_OUTPUT
 
       # Set the COMMIT_ID env variable
     #   - name: Set the Commit Id
