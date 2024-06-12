@@ -1,12 +1,11 @@
 {
   "properties": {
-    "path": "echo9",
+    "path": "echo",
     "apiRevision": "1",
     "authenticationSettings": {
       "oAuth2AuthenticationSettings": [],
       "openidAuthenticationSettings": []
     },
-    "description": "Teste de Pull Request 9",
     "isCurrent": true,
     "displayName": "Echo API",
     "protocols": [

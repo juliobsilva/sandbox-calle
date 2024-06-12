@@ -1,10 +1,9 @@
 openapi: 3.0.1
 info:
   title: Echo API
-  description: Teste de Pull Request 9
   version: '1.0'
 servers:
-  - url: https://apim-bra.azure-api.net/echo9
+  - url: https://apim-poc-br-dev.azure-api.net/echo
 paths:
   /resource:
     get:
