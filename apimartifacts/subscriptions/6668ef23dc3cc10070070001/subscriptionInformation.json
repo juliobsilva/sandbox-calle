@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "scope": "/subscriptions/bdfc5b78-7a9c-4d3e-a616-913a49e3e20c/resourceGroups/RG-APIM-POC/providers/Microsoft.ApiManagement/service/apim-poc-br-dev/products/starter",
+    "allowTracing": false,
+    "ownerId": "/subscriptions/bdfc5b78-7a9c-4d3e-a616-913a49e3e20c/resourceGroups/RG-APIM-POC/providers/Microsoft.ApiManagement/service/apim-poc-br-dev/users/1",
+    "state": "active"
+  }
+}
