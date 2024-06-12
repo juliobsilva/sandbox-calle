@@ -22,7 +22,8 @@ jobs:
   get-commit:
     runs-on: ubuntu-latest
     steps:
-
+    - uses: actions/checkout@v3
+    
     # Set the COMMIT_ID env variable
     - name: Set the Commit Id
       id: commit
