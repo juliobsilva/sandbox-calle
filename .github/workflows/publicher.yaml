@@ -18,9 +18,8 @@ on:
 jobs:
 
   call-build-pr:
-    if: (inputs.commit-id == 'publish-artifacts-in-last-commit' || inputs.commit-id != '')
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
       destination-enviroment: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
-      commit-id: ${{inputs.commit-id}}
+      commit-id: ${{ github.event_name == 'pull_request' && github.sha || inputs.commit-id  }}
     secrets: inherit
