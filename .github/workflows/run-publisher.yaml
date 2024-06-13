@@ -21,8 +21,10 @@ on:
 jobs:
   get-commit:
     runs-on: ubuntu-latest
+    outputs:
+        commit_id: ${{ steps.commit.outputs.commit_id }}
+    steps: 
 
-    steps:
     # # Set the COMMIT_ID env variable
     - name: Set the Commit Id
       id: commit
