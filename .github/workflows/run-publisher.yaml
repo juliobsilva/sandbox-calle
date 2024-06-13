@@ -22,14 +22,14 @@ jobs:
   get-commit:
     runs-on: ubuntu-latest
     outputs:
-        commit_id: ${{ steps.commit.outputs.last_commit_id }}
+        commit_id: ${{ steps.commit.outputs.commit_id }}
     steps: 
 
     # # Set the COMMIT_ID env variable
     - name: Set the Commit Id
       id: commit
       run: |
-        echo "last_commit_id=${{ github.sha }}" >> $GITHUB_ENV
+        echo "::set-output name=commit_id::${{ github.sha }}"
     
 
   #Publish with Commit ID
