@@ -12,8 +12,31 @@ async function run() {
     // Login no GitHub CLI
     await exec.exec('sh', ['-c', `echo ${githubToken} | gh auth login --with-token`]);
 
-    // Mudar para a branch existente
-    await exec.exec('git', ['checkout', branchName]);
+    // Verificar se a branch existe localmente
+    let branchExists = false;
+    await exec.exec('git', ['rev-parse', '--verify', '--quiet', branchName], {
+      ignoreReturnCode: true,
+      listeners: {
+        stdout: () => {
+          branchExists = true;
+        }
+      }
+    });
+
+    // Se a branch não existir, criá-la
+    if (!branchExists) {
+      await exec.exec('git', ['checkout', '-b', branchName]);
+    } else {
+      // Se a branch existir, fazer checkout para ela
+      await exec.exec('git', ['checkout', branchName]);
+
+      // Fetch das alterações do repositório remoto
+      await exec.exec('git', ['fetch']);
+
+      // Rebase ou merge com a branch principal (opcional)
+      // Este exemplo mostra um rebase com a branch main
+      await exec.exec('git', ['rebase', 'origin/main']);
+    }
 
     // Adicionar um arquivo com run_id
     const runId = process.env.GITHUB_RUN_ID;
