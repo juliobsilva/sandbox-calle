@@ -5,17 +5,15 @@ const fs = require('fs');
 async function run() {
   try {
     const githubToken = core.getInput('github-token');
+    const branchName = core.getInput('branch-name');
     const prTitle = core.getInput('pr-title');
     const prBody = core.getInput('pr-body');
 
     // Login no GitHub CLI
     await exec.exec('sh', ['-c', `echo ${githubToken} | gh auth login --with-token`]);
 
-    // Criar uma nova branch
-    const runNumber = process.env.GITHUB_RUN_NUMBER;
-    const runAttempt = process.env.GITHUB_RUN_ATTEMPT;
-    const branchName = `extracted-api/run-${runNumber}-${runAttempt}`;
-    await exec.exec('git', ['checkout', '-b', branchName]);
+    // Mudar para a branch existente
+    await exec.exec('git', ['checkout', branchName]);
 
     // Adicionar um arquivo com run_id
     const runId = process.env.GITHUB_RUN_ID;
