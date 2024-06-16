@@ -12,6 +12,10 @@ async function run() {
     // Login no GitHub CLI
     await exec.exec('sh', ['-c', `echo ${githubToken} | gh auth login --with-token`]);
 
+    // Verificar a branch atual
+    console.log('Verificando a branch atual...');
+    await exec.exec('git', ['status']);
+
     // Adicionar um arquivo com run_id
     const runId = process.env.GITHUB_RUN_ID;
     const filename = `run-id-${runId}.txt`;
