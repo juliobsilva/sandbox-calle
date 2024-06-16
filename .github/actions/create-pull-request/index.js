@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-const execgh = require('@actions/github');
 const fs = require('fs');
 
 async function run() {
