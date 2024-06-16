@@ -13,7 +13,7 @@ async function run() {
     await exec.exec('sh', ['-c', `echo ${githubToken} | gh auth login --with-token`]);
 
     // Criar e mudar para a nova branch
-    await exec.exec('git', ['checkout', '-b', branchName]);
+    await exec.exec('git', ['checkout', branchName]);
 
     // Adicionar um arquivo com run_id
     const runId = process.env.GITHUB_RUN_ID;
@@ -60,5 +60,3 @@ async function run() {
 
 run();
 
-
-//testeteste
