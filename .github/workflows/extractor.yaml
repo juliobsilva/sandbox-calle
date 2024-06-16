@@ -1,6 +1,9 @@
 name: API Mgmt APIOPS Extractor
  
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       source-enviroment:
