@@ -10,10 +10,10 @@ async function run() {
     const prBody = core.getInput('pr-body');
 
     // Login no GitHub CLI
-    await exec.exec('sh', ['-c', `echo ${githubToken} | gh auth login --with-token`]);
+    //await exec.exec('sh', ['-c', `echo ${githubToken} | gh auth login --with-token`]);
 
     // Criar e mudar para a nova branch
-    await exec.exec('git', ['checkout', '-b', branchName]);
+    //await exec.exec('git', ['checkout', '-b', branchName]);
 
     // Adicionar um arquivo com run_id
     const runId = process.env.GITHUB_RUN_ID;
@@ -21,7 +21,7 @@ async function run() {
     fs.writeFileSync(filename, `run-id-${runId}\n`);
 
     // Adicionar o arquivo ao staging
-    await exec.exec('git', ['add', filename]);
+    //await exec.exec('git', ['add', filename]);
 
     // Verificar se há mudanças a serem commitadas
     let changesDetected = false;
