@@ -23,7 +23,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    steps:
   - run: |
       if [ -z "${{ inputs.origin-branch }}" ]; then
         echo "branch_name=${{ github.ref_name }}" >> $GITHUB_ENV
