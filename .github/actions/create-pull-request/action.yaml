@@ -1,20 +1,27 @@
-# .github/actions/create-pull-request/action.yml
 name: 'Create Pull Request'
-description: 'Cria um Pull Request com base em uma nova branch'
+description: 'Creates a pull request with changes'
+
 inputs:
-  github-token:
-    description: 'Token do GitHub'
+  token:
+    description: 'GitHub Token'
     required: true
-  branch-name:
-    description: 'Nome da nova branch'
+  branch:
+    description: 'Branch name'
     required: true
-  pr-title:
-    description: 'Título do Pull Request'
+  base:
+    description: 'Base branch for the pull request'
     required: true
-  pr-body:
-    description: 'Corpo do Pull Request'
-    required: false
-    default: ''
+  commit_message:
+    description: 'Commit message'
+    required: true
+  title:
+    description: 'Title of the pull request'
+    required: true
+  body:
+    description: 'Body of the pull request'
+    required: true
+
 runs:
   using: 'node16'
   main: 'index.js'
+
