@@ -43,7 +43,7 @@ async function run() {
         await exec('git', ['push', 'origin', branch]);
 
         // Create a pull request
-        await octokit.rest.pulls.create({
+        const { data: pullRequest } = await octokit.rest.pulls.create({
             owner,
             repo,
             title,
@@ -51,6 +51,31 @@ async function run() {
             head: branch,
             base
         });
+
+        // Check the pull request status
+        const pullRequestNumber = pullRequest.number;
+        const checkMergeStatus = async () => {
+            const { data: pr } = await octokit.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: pullRequestNumber
+            });
+
+            if (pr.merged) {
+                console.log(`Pull request #${pullRequestNumber} merged. Deleting branch ${branch}.`);
+                await octokit.rest.git.deleteRef({
+                    owner,
+                    repo,
+                    ref: `heads/${branch}`
+                });
+            } else if (pr.state === 'closed') {
+                console.log(`Pull request #${pullRequestNumber} closed without merge.`);
+            } else {
+                console.log(`Pull request #${pullRequestNumber} is still open. Will not delete branch.`);
+            }
+        };
+
+        await checkMergeStatus();
 
     } catch (error) {
         core.setFailed(error.message);
