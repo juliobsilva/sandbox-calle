@@ -1,13 +1,13 @@
 {
   "properties": {
-    "path": "echo1",
+    "path": "echo3",
     "apiRevision": "3",
     "authenticationSettings": {
       "oAuth2AuthenticationSettings": [],
       "openidAuthenticationSettings": []
     },
     "isCurrent": true,
-    "displayName": "Echo API001",
+    "displayName": "Echo API",
     "protocols": [
       "https"
     ],
