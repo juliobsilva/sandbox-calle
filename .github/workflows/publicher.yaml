@@ -24,6 +24,6 @@ jobs:
     if: (github.event.inputs.destination-enviroment == 'prod' || github.event.inputs.destination-enviroment == 'hml')
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment-prod: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
+      destination-enviroment: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
       commit-id: ${{ inputs.commit-id }}
     secrets: inherit
