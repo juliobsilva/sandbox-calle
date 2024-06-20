@@ -24,7 +24,7 @@ jobs:
   call-build-pr:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment-prod: ${{ inputs.destination-enviroment-prod }}
-      destination-enviroment-hml: ${{ inputs.destination-enviroment-hml }}
+      destination-enviroment-prod: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment-prod }}
+      destination-enviroment-hml: ${{ github.event_name == 'pull_request' && 'hml' || inputs.destination-enviroment-hml }}
       commit-id: ${{ inputs.commit-id }}
     secrets: inherit
