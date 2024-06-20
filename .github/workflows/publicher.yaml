@@ -9,11 +9,11 @@ on:
     inputs:
       destination-enviroment-prod:
         type: string
-        required: true
+        required: false
         default: prod
       destination-enviroment-hml:
         type: string
-        required: true
+        required: false
         default: hml
       commit-id:
         type: string
