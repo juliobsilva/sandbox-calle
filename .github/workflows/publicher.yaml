@@ -11,9 +11,9 @@ on:
         type: choice
         required: true
         options:
-        - prod
-        - hml
         - dev
+        - hml
+        - prod
 
       commit-id:
         type: string
