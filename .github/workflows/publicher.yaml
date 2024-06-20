@@ -1,9 +1,9 @@
 name: API Mgmt APIOPS Publisher
 
 on:
-  pull_request:
-    branches: [main, develop]
-    types: closed
+  # pull_request:
+  #   branches: [main, develop]
+  #   types: closed
 
   workflow_dispatch:
     inputs:
@@ -24,6 +24,6 @@ jobs:
     if: (github.event.inputs.destination-enviroment == 'prod' || github.event.inputs.destination-enviroment == 'hml')
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment: ${{ github.event_name == 'pull_request' && 'prod' || inputs.destination-enviroment }}
+      destination-enviroment: ${{inputs.destination-enviroment}}
       commit-id: ${{ inputs.commit-id }}
     secrets: inherit
