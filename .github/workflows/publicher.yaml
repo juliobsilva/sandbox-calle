@@ -21,9 +21,8 @@ on:
 jobs:
 
   call-build-pr:
-    if: (github.event.inputs.destination-enviroment == 'prod' || github.event.inputs.destination-enviroment == 'hml')
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment: ${{inputs.destination-enviroment}}
+      destination-enviroment: ${{ github.event.inputs.destination-enviroment == 'prod' && 'prod' || github.event.inputs.destination-enviroment == 'hml' && 'hml' }}
       commit-id: ${{ inputs.commit-id }}
     secrets: inherit
