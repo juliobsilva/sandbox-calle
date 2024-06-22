@@ -1,19 +1,23 @@
 name: API Mgmt APIOPS Publisher
 
 on:
-  # pull_request:
-  #   branches: [main, develop]
-  #   types: closed
+  pull_request:
+    branches: [main, develop]
+    types: closed
 
   workflow_dispatch:
     inputs:
+      # destination-enviroment:
+      #   type: choice
+      #   required: true
+      #   options:
+      #   - dev
+      #   - hml
+      #   - prod
+
       destination-enviroment:
-        type: choice
+        type: string
         required: true
-        options:
-        - dev
-        - hml
-        - prod
 
       commit-id:
         type: string
@@ -21,9 +25,16 @@ on:
 
 jobs:
 
-  call-build-pr:
+  call-build-hml:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment: ${{inputs.destination-enviroment}}
+      destination-enviroment: "hml"
+      commit-id: ${{ inputs.commit-id }}
+    secrets: inherit
+
+  call-build-prod:
+    uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
+    with:
+      destination-enviroment: "prod"
       commit-id: ${{ inputs.commit-id }}
     secrets: inherit
