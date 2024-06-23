@@ -33,6 +33,7 @@ jobs:
     secrets: inherit
 
   call-build-prod:
+    needs: call-build-hml
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
       destination-enviroment: "prod"
