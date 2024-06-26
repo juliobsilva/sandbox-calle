@@ -7,13 +7,13 @@ on:
 
   workflow_dispatch:
     inputs:
-       destination-environment:
-         type: choice
-         required: true
-         options:
-         - dev
-         - hml
-         - prod
+      destination-environment:
+        type: choice
+        required: true
+        options:
+        - dev
+        - hml
+        - prod
 
       commit-id:
         type: string
@@ -21,17 +21,9 @@ on:
 
 jobs:
 
-  call-build-hml:
+  call-build-publisher:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
       destination-environment: ${{ inputs.destination-environment }}
-      commit-id: ${{ inputs.commit-id }}
-    secrets: inherit
-
-  call-build-prod:
-    needs: call-build-hml
-    uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
-    with:
-      destination-environment: "prod"
       commit-id: ${{ inputs.commit-id }}
     secrets: inherit
