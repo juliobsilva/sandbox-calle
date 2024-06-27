@@ -16,5 +16,5 @@ jobs:
   call-build:
     uses: juliobsilva/api-management/.github/workflows/apim-apiops-extractor.yaml@main
     with:
-      environment: ${{ inputs.source-enviroment }}
+      source-enviroment: ${{inputs.source-enviroment}}
     secrets: inherit
