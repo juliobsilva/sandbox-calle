@@ -28,7 +28,10 @@ jobs:
             git add ${{ GITHUB.WORKSPACE }}/apimartifacts/*
             git checkout main
             git fetch --tags
-            LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>&1 || echo "none")
+            LATELATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>&1)
+            if [[ $? -ne 0 ]]; then
+            LATEST_TAG=""
+            fi
             echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
             echo "Latest tag: $LATEST_TAG"
             echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
