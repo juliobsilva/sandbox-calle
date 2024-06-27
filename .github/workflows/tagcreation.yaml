@@ -28,14 +28,13 @@ jobs:
             git add ${{ GITHUB.WORKSPACE }}/apimartifacts/*
             git checkout main
             git fetch --tags
-            LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>&1)
+            LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>&1 || echo "none")
             echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
             echo "Latest tag: $LATEST_TAG"
             echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
   
       - name: Calculate next build number
         id: calc_build_number
-        if: env.LATEST_TAG == 0 || env.LATEST_TAG == 'none'
         run: |
             if [[ "${{ steps.get_latest_tag.outputs.latest_tag }}" =~ ^RTS[0-9]+BN([0-9]+)$ ]]; then
                 BUILD_NUMBER=$((BASH_REMATCH[1]+1))
