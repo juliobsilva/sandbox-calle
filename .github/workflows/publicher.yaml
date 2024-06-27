@@ -15,7 +15,10 @@ on:
         - hml
         - prod 
 
-      commit-id:
+      # commit-id:
+      #   type: string
+      #   required: false
+      release:
         type: string
         required: false
 
@@ -24,6 +27,6 @@ jobs:
   call-build-publisher:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment: ${{inputs.destination-enviroment}}
-      commit-id: ${{ inputs.commit-id }}
+      destination-enviroment: ${{ inputs.destination-enviroment }}
+      release: ${{ inputs.release }}
     secrets: inherit
