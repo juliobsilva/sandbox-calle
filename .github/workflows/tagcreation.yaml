@@ -29,7 +29,6 @@ jobs:
             git checkout main
             git fetch --tags
             LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1` 2>/dev/null || echo "none")
-            echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
             echo "Latest tag: $LATEST_TAG"
             echo "latest_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
   
