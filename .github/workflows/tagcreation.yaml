@@ -10,6 +10,7 @@ jobs:
     tagcreation:
       runs-on: ubuntu-latest
       outputs:
+        datetemp: ${{ steps.timestamp.outputs.datetemp  }}
         get_latest_tag: ${{ steps.get_latest_tag.outputs.latest_tag }}
         build_number: ${{ steps.calc_build_number.outputs.build_number }}
 
