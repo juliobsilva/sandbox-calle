@@ -6,7 +6,7 @@ on:
       source-enviroment:
         type: string
         required: true
-        default: dev
+        default: "dev"
  
 permissions:
    contents: write
@@ -16,5 +16,5 @@ jobs:
   call-build:
     uses: juliobsilva/api-management/.github/workflows/apim-apiops-extractor.yaml@main
     with:
-      source-enviroment: ${{ inputs.source-enviroment }}
+      environment: ${{ inputs.source-enviroment }}
     secrets: inherit
