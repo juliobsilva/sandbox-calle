@@ -14,10 +14,7 @@ on:
         - dev
         - hml
         - prod 
-
-      # commit-id:
-      #   type: string
-      #   required: false
+        
       release:
         type: string
         required: false
