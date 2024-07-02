@@ -10,7 +10,7 @@ jobs:
     tagcreation:
       runs-on: ubuntu-latest
       outputs:
-        date_temp: ${{ steps.time_stamp.outputs.datetemp  }}
+        datetemp: ${{ steps.timestamp.outputs.datetemp  }}
         get_latest_tag: ${{ steps.get_latest_tag.outputs.latest_tag }}
         build_number: ${{ steps.calc_build_number.outputs.build_number }}
 
@@ -44,7 +44,7 @@ jobs:
             echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
 
       - name: Get the timestamp
-        id: time_stamp
+        id: timestamp
         run: |
             TIMESTAMP=$(date +'%Y%m%d%H%M%S')
             echo "Timestamp: $TIMESTAMP"
@@ -52,7 +52,7 @@ jobs:
 
       - name: Create and push tag
         env:
-         TIMESTAMP: ${{ steps.time_stamp.outputs.date_temp }}
+         TIMESTAMP: ${{ steps.timestamp.outputs.datetemp }}
          BUILD_NUMBER: ${{ steps.calc_build_number.outputs.build_number }}
         run: |
             TAG="RTS${{env.TIMESTAMP}}BN${{env.BUILD_NUMBER}}"
