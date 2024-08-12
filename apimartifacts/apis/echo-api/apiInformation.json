@@ -1,11 +1,8 @@
 {
   "properties": {
-    "path": "echo600",
+    "path": "echo",
     "apiRevision": "1",
-    "authenticationSettings": {
-      "oAuth2AuthenticationSettings": [],
-      "openidAuthenticationSettings": []
-    },
+    "authenticationSettings": {},
     "isCurrent": true,
     "displayName": "Echo API",
     "protocols": [
