@@ -1,5 +1,5 @@
 apiNames:
-- Echo API
+- echo-api
  
 backendNames: [ignore]
  
