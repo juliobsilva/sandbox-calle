@@ -3,7 +3,7 @@ info:
   title: Echo API
   version: '1.0'
 servers:
-  - url: https://apim-dev-br.azure-api.net/echo100
+  - url: https://apim-dev-br.azure-api.net/echo200
 paths:
   /resource:
     get:
