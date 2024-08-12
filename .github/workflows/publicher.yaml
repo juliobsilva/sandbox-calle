@@ -1,10 +1,6 @@
 name: API Mgmt APIOPS Publisher
 
 on:
-  # pull_request:
-  #   branches: [main, develop]
-  #   types: closed
-
   workflow_dispatch:
     inputs:
       destination-enviroment:
