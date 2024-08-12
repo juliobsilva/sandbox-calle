@@ -3,7 +3,7 @@ name: API Mgmt APIOPS Extractor
 on:
   workflow_dispatch:
     inputs:
-      source-enviroment:
+      source-environment:
         type: string
         required: true
         default: "dev"
@@ -16,6 +16,6 @@ jobs:
   call-build:
     uses: juliobsilva/api-management/.github/workflows/apim-apiops-extractor.yaml@main
     with:
-      source-enviroment: ${{inputs.source-enviroment}}
+      source-environment: ${{ inputs.source-environment }}
     secrets: inherit
 

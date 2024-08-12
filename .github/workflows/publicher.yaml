@@ -3,7 +3,7 @@ name: API Mgmt APIOPS Publisher
 on:
   workflow_dispatch:
     inputs:
-      destination-enviroment:
+      destination-environment:
         type: choice
         required: true
         options:
@@ -20,6 +20,6 @@ jobs:
   call-build-publisher:
     uses:  juliobsilva/api-management/.github/workflows/apim-apiops-publisher.yaml@main
     with:
-      destination-enviroment: ${{ inputs.destination-enviroment }}
+      destination-environment: ${{ inputs.destination-environment }}
       release: ${{ inputs.release }}
     secrets: inherit
